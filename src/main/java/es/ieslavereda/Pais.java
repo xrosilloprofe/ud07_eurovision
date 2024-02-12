@@ -1,5 +1,7 @@
 package es.ieslavereda;
 
+import java.util.Objects;
+
 public class Pais {
 
     private String nombre;
@@ -24,6 +26,22 @@ public class Pais {
         return cancion;
     }
 
+    @Override
+    public int hashCode() {
+        return nombre.hashCode()+representante.hashCode()+cancion.hashCode();
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Pais pais = (Pais) o;
+        return nombre.equals(pais.getNombre());
+    }
+
+    @Override
+    public String toString() {
+        return "Pais: " +
+                "nombre=" + nombre + ", representante=" + representante + ", cancion=" + cancion;
+    }
 
 }
