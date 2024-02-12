@@ -33,7 +33,7 @@ public class Main {
         Pais croacia = new Pais("Croacia","Let 3","Mama SC!");
         Pais alemania = new Pais("Alemania","Lord of the Lost","Blood & Glitter");
 
-        Eurovision eurovision = new Eurovision(List.of(suecia,israel,italia,finlandia,estonia,australia,belgica,austria,espanya,chequia,
+        Eurovision eurovision2023 = new Eurovision(List.of(suecia,israel,italia,finlandia,estonia,australia,belgica,austria,espanya,chequia,
                 lituania,armenia,chipre,suiza,ucrania,francia,noruega,portugal,eslovenia,moldavia,albania,uk,serbia,polonia,croacia,alemania));
 
 
@@ -43,17 +43,7 @@ public class Main {
 
 
     /*
-    Se pretende realizar una simulacion del popular concurso de Eurovision, en el que un conjunto de paises, presentan una cancion y se vota la mejor de todas ellas.
-    Para realizar la simulacion se debera:
 
-- Tener una coleccion de 26 paises.
-
-
-- Cada pais debera votar a 10 paises, repartiendo las puntaciones que van del 1 al 8, mas una puntuacion de 10 y otra de 12.
-
-- Los paises no se pueden votar a si mismos.
-
-- Se desea almacenar las votaciones que realiza cada pais.
 
 Una vez realizado el sorteo, se debera obtener:
 

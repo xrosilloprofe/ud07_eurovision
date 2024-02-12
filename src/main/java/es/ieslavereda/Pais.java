@@ -1,17 +1,20 @@
 package es.ieslavereda;
 
-import java.util.Objects;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Pais {
 
     private String nombre;
     private String representante;
     private String cancion;
+    private Map<Pais, Puntuacion> votaciones;
 
     public Pais(String nombre, String representante, String cancion) {
         this.nombre = nombre;
         this.representante = representante;
         this.cancion = cancion;
+        votaciones = new HashMap<>();
     }
 
     public String getNombre() {
@@ -24,6 +27,10 @@ public class Pais {
 
     public String getCancion() {
         return cancion;
+    }
+
+    public void setVotaciones(Map<Pais,Puntuacion> votaciones){
+        this.votaciones = votaciones;
     }
 
     @Override
