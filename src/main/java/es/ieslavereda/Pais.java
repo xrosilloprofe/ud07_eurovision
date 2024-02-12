@@ -8,8 +8,8 @@ public class Pais implements Comparable<Pais> {
     private String nombre;
     private String representante;
     private String cancion;
-    private Map<Pais, Integer> votaciones;
-    private int puntos;
+    private Map<Pais, Puntuacion> votaciones;
+    private Integer puntos;
 
     public Pais(String nombre, String representante, String cancion) {
         this.nombre = nombre;
@@ -30,9 +30,9 @@ public class Pais implements Comparable<Pais> {
         return cancion;
     }
 
-    public Map<Pais, Integer> getVotaciones() {return votaciones;}
+    public Map<Pais, Puntuacion> getVotaciones() {return votaciones;}
 
-    public void setVotaciones(Map<Pais, Integer> votaciones){
+    public void setVotaciones(Map<Pais, Puntuacion> votaciones){
         this.votaciones = votaciones;
     }
 
