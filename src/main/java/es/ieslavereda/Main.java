@@ -30,7 +30,7 @@ public class Main {
         Pais albania = new Pais("Albania","Albina & Familja Kelmendi","Duje");
         Pais uk = new Pais("Reino Unido","Mae Muller","I Wrote a Song");
         Pais serbia = new Pais("Serbia","Luke Black","Samo Mi Se Spava");
-        Pais polonia = new Pais("Polonia","Blanka","Solo");
+        Pais polonia = new Pais("Polonia","blanka","Solo");
         Pais croacia = new Pais("Croacia","Let 3","Mama SC!");
         Pais alemania = new Pais("Alemania","Lord of the Lost","Blood & Glitter");
 
@@ -54,12 +54,20 @@ public class Main {
         System.out.println(eurovision2023.ganador());
 
         //Listado de canciones ordenadas por nombre.
+        System.out.println("Ordenadas por nombre de canción");
+        System.out.println(eurovision2023.porNombreCancion());
 
         //Listado de los paises ordenados por puntuaciones recibidas.
+        System.out.println("Ordenadas por puntuaciones");
+        System.out.println(eurovision2023.porPuntos());
 
         //Listado de las 3 canciones mas votadas junto con su puntuacion.
+        System.out.println("Podium");
+        System.out.println(eurovision2023.podium());
 
-        //Listado de cantantes ordenados por nombre.
+        //Listado de cantantes ordenados por nombre
+        System.out.println("Cantantes");
+        System.out.println(eurovision2023.porNombreRepresentante());
 
     }
 

@@ -45,6 +45,26 @@ public class Eurovision {
         return aux.get();
     }
 
+    public List<String> porNombreCancion(){
+        return eurovision.stream().
+                sorted(Comparator.comparing(Pais::getCancion,String.CASE_INSENSITIVE_ORDER)).
+                map(Pais::getCancion).collect(Collectors.toList());
+    }
+
+    public List<Pais> porPuntos(){
+        return eurovision.stream().sorted(Comparator.comparing(Pais::getPuntos).reversed()).collect(Collectors.toList());
+    }
+
+    public List<Pais> podium(){
+        return porPuntos().stream().limit(3).collect(Collectors.toList());
+    }
+
+    public List<String> porNombreRepresentante(){
+        return eurovision.stream().
+                sorted(Comparator.comparing(Pais::getRepresentante,String.CASE_INSENSITIVE_ORDER)).
+                map(Pais::getRepresentante).collect(Collectors.toList());
+    }
+
     @Override
     public String toString() {
         String cadena = "Eurovision=\n";
