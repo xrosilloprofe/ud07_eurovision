@@ -2,19 +2,21 @@ package es.ieslavereda;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Pais {
 
     private String nombre;
     private String representante;
     private String cancion;
-    private Map<Pais, Puntuacion> votaciones;
+    private Map<Puntuacion, Pais> votaciones;
+    private int puntos;
 
     public Pais(String nombre, String representante, String cancion) {
         this.nombre = nombre;
         this.representante = representante;
         this.cancion = cancion;
-        votaciones = new HashMap<>();
+        votaciones = new TreeMap<>();
     }
 
     public String getNombre() {
@@ -29,7 +31,9 @@ public class Pais {
         return cancion;
     }
 
-    public void setVotaciones(Map<Pais,Puntuacion> votaciones){
+    public Map<Puntuacion, Pais> getVotaciones() {return votaciones;}
+
+    public void setVotaciones(Map<Puntuacion, Pais> votaciones){
         this.votaciones = votaciones;
     }
 

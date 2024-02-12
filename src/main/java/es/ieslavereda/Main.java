@@ -1,6 +1,7 @@
 package es.ieslavereda;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -36,26 +37,38 @@ public class Main {
         Eurovision eurovision2023 = new Eurovision(List.of(suecia,israel,italia,finlandia,estonia,australia,belgica,austria,espanya,chequia,
                 lituania,armenia,chipre,suiza,ucrania,francia,noruega,portugal,eslovenia,moldavia,albania,uk,serbia,polonia,croacia,alemania));
 
+        eurovision2023.realizarVotaciones();
 
+        // 1. Listado de todos los paises participantes
+        List<Pais> paisesParticipantes = eurovision2023.getEurovision();
+        System.out.print("Países participantes");
+        for(Pais pais: paisesParticipantes)
+            System.out.print(" - " + pais.getNombre());
+        System.out.println();
 
-        System.out.println("Hello world!");
+        //Listado de todos los paises por orden alfabetico junto con las votaciones realizadas ordenadas de mayor a menor
+
+        System.out.println(eurovision2023.toString());
+
+        //Nombre del pais ganador junto con la puntacion total obtenida y paises que le han votado junto con los puntos asignados por cada uno de ellos
+        eurovision2023.getEurovision().stream().collect(Collectors.toList());
+
+        //Listado de canciones ordenadas por nombre.
+
     }
+
 
 
     /*
 
 
-Una vez realizado el sorteo, se debera obtener:
 
-- Listado de todos los paises participantes
 
-- Listado de todos los paises por orden alfabetico junto con las votaciones realizadas ordenadas de mayor a menor.
+- .
 
 - Listado de los paises ordenados por puntuaciones recibidas.
 
-- Nombre del pais ganador junto con la puntacion total obtenida y paises que le han votado junto con los puntos asignados por cada uno de ellos.
 
-- Listado de canciones ordenadas por nombre.
 
 - Listado de las 3 canciones mas votadas junto con su puntuacion.
 
