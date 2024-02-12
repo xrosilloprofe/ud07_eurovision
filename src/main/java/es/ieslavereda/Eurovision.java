@@ -1,7 +1,7 @@
 package es.ieslavereda;
 
-import javax.print.attribute.standard.PrinterIsAcceptingJobs;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Eurovision {
 
@@ -16,29 +16,33 @@ public class Eurovision {
     public void realizarVotaciones(){
         for(Pais pais:eurovision){
             List<Pais> aux = new ArrayList<>(eurovision);
-            Map<Puntuacion, Pais> puntuacionesPais=new TreeMap<>();
+            Map<Pais, Integer> puntuacionesPais=new TreeMap<>();
             //Los paises no se pueden votar a si mismos.
             aux.remove(pais);
             Collections.shuffle(aux);
             int i=0;
             for(Puntuacion puntuacion:Puntuacion.values()){
-                puntuacionesPais.put(puntuacion,aux.get(i++));
+                puntuacionesPais.put(aux.get(i++),puntuacion.getValue());
             }
             pais.setVotaciones(puntuacionesPais);
         }
+        ponerPuntosPais();
     }
 
-    public Pais buscarPaisGanador(){
-        Pais ganador;
-        int max=0;
+    private void ponerPuntosPais(){
         for (Pais pais:eurovision){
-            int puntos =0;
-            for(Pais pais1:eurovision){
-                if(pais1.getVotaciones().values().contains(pais))
-                    puntos += pais1.getVotaciones().
+            int puntos=0;
+            for(Pais restoPaises:eurovision){
+                if(restoPaises.getVotaciones().keySet().contains(pais))
+                    puntos += restoPaises.getVotaciones().get(pais);
             }
+            pais.setPuntos(puntos);
         }
+    }
 
+    public Pais ganador(){
+        Optional<Pais> aux = eurovision.stream().sorted(Comparator.comparing(Pais::getPuntos).reversed()).limit(1).findFirst();
+        return aux.get();
     }
 
     @Override
@@ -46,8 +50,11 @@ public class Eurovision {
         String cadena = "Eurovision=\n";
         for (Pais pais:eurovision){
             cadena += pais+"\n";
-            for (Puntuacion puntos:pais.getVotaciones().keySet()){
-                cadena += "\t"+pais.getVotaciones().get(puntos).getNombre()+ " puntos: " + puntos.getValue() + "\n";
+            List<Map.Entry<Pais,Integer>> mapa = pais.getVotaciones().entrySet().stream().
+                    sorted(Map.Entry.comparingByValue()).collect(Collectors.toList());
+
+            for(Map.Entry<Pais,Integer> votado:mapa){
+                cadena += "\t"+votado.getKey().getNombre() + " puntos: " + votado.getValue() + "\n";
             }
         }
         return cadena;

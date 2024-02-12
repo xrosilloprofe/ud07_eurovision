@@ -1,15 +1,14 @@
 package es.ieslavereda;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class Pais {
+public class Pais implements Comparable<Pais> {
 
     private String nombre;
     private String representante;
     private String cancion;
-    private Map<Puntuacion, Pais> votaciones;
+    private Map<Pais, Integer> votaciones;
     private int puntos;
 
     public Pais(String nombre, String representante, String cancion) {
@@ -31,10 +30,18 @@ public class Pais {
         return cancion;
     }
 
-    public Map<Puntuacion, Pais> getVotaciones() {return votaciones;}
+    public Map<Pais, Integer> getVotaciones() {return votaciones;}
 
-    public void setVotaciones(Map<Puntuacion, Pais> votaciones){
+    public void setVotaciones(Map<Pais, Integer> votaciones){
         this.votaciones = votaciones;
+    }
+
+    public int getPuntos() {
+        return puntos;
+    }
+
+    public void setPuntos(int puntos) {
+        this.puntos = puntos;
     }
 
     @Override
@@ -50,9 +57,14 @@ public class Pais {
     }
 
     @Override
+    public int compareTo(Pais pais){
+        return nombre.compareTo(pais.getNombre());
+    }
+
+    @Override
     public String toString() {
         return "Pais: " +
-                "nombre=" + nombre + ", representante=" + representante + ", cancion=" + cancion;
+                "nombre=" + nombre + ", representante=" + representante + ", cancion=" + cancion +", puntos="+puntos;
     }
 
 }

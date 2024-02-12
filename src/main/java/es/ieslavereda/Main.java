@@ -51,29 +51,16 @@ public class Main {
         System.out.println(eurovision2023.toString());
 
         //Nombre del pais ganador junto con la puntacion total obtenida y paises que le han votado junto con los puntos asignados por cada uno de ellos
-        eurovision2023.getEurovision().stream().collect(Collectors.toList());
+        System.out.println(eurovision2023.ganador());
 
         //Listado de canciones ordenadas por nombre.
 
+        //Listado de los paises ordenados por puntuaciones recibidas.
+
+        //Listado de las 3 canciones mas votadas junto con su puntuacion.
+
+        //Listado de cantantes ordenados por nombre.
+
     }
-
-
-
-    /*
-
-
-
-
-- .
-
-- Listado de los paises ordenados por puntuaciones recibidas.
-
-
-
-- Listado de las 3 canciones mas votadas junto con su puntuacion.
-
-- Listado de cantantes ordenados por nombre.
-
-     */
 
 }
